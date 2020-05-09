@@ -42,7 +42,8 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+volatile uint32_t systick_value = 0;
+volatile uint32_t last_toggle = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -186,7 +187,11 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
-
+  systick_value = HAL_GetTick();
+  if (systick_value - last_toggle >= 1000) {
+    toggle = true;
+    last_toggle = systick_value;
+  }
   /* USER CODE END SysTick_IRQn 1 */
 }
 

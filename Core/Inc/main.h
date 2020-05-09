@@ -32,8 +32,10 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdint.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
+extern volatile bool toggle;
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
