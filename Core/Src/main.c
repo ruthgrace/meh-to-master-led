@@ -55,7 +55,8 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+static uint32_t systick_value = 0;
+static uint32_t last_toggle = 0;
 /* USER CODE END 0 */
 
 /**
@@ -95,10 +96,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  last_toggle = HAL_GetTick();
   while (1)
   {
     /* USER CODE END WHILE */
-
+	systick_value = HAL_GetTick();
+	if (systick_value - last_toggle >= 1000) {
+		HAL_GPIO_TogglePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin);
+		last_toggle = systick_value;
+	}
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
