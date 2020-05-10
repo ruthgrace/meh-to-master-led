@@ -189,8 +189,8 @@ void SysTick_Handler(void)
   /* USER CODE BEGIN SysTick_IRQn 1 */
   systick_value = HAL_GetTick();
   if (systick_value - last_toggle >= 1000) {
-    toggle = true;
-    last_toggle = systick_value;
+	HAL_GPIO_TogglePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin);
+	last_toggle = systick_value;
   }
   /* USER CODE END SysTick_IRQn 1 */
 }

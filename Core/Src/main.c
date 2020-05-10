@@ -55,7 +55,7 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-volatile bool toggle = false;
+
 /* USER CODE END 0 */
 
 /**
@@ -97,11 +97,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	if (toggle) {
-	  HAL_GPIO_TogglePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin);
-	  toggle = false;
-    }
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
